@@ -52,9 +52,9 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">UniCanvas: Affordance-Aware Unified Real Image Editing via Customized Text-to-image Generation</h1>
+            <h1 class="title is-1 publication-title">Less is More: Shrinking Injection to Reconcile Fidelity and Editability in Customized Generation</h1>
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Jian Jin, Yang Shen, Xinyang Zhao, Zhenyong Fu, Jian Yang</span>
+              <span class="author-block">Jian Jin, Shangbing Gao, Zhenyong Fu, Jian Yang</span>
                 </div>
 
 
@@ -63,7 +63,7 @@
                   </div>
 
                   <div class="is-size-3 publication-authors">
-                    <span class="author-block">International Journal of Computer Vision</span>
+                    <span class="author-block">IEEE Transactions on Multimedia</span>
 
                   </div>
 
@@ -79,17 +79,6 @@
                         <span>Paper</span>
                       </a>
                     </span>
-
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/jinjianRick/unicanvas/" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
             </div>
           </div>
         </div>
@@ -107,9 +96,9 @@
       <img src="pics/teaser.png" alt="Teaser Image" width="1200px">
       <!-- Insert Title -->
       <h2 class="subtitle has-text-left" style="font-size: 13px;">
-        Given a source real image and a target subject specified by several reference images, UniCanvas can seamlessly render the target subject
-        into a designated region of the source image, while simultaneously being able to perform semantic edits on the resultant image in a precise and
-        effortless manner.
+        Previous customized generation methods inject customized information into the denoising backbone across all denoising steps 
+        and model layers (i.e., "full injection"), leading to an additional reduction in editability. SInCE effectively restores editability 
+        while preserving key identifying features of the concept, harmonizing concept fidelity and concept editability in customized generation.
       </h2>
     </div>
   </div> 
@@ -125,16 +114,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The demand for assorted conditional edits on a single real image is becoming increasingly prevalent.
-            We focus on two dominant editing tasks that respectively condition on image and text input, namely subject-driven editing and semantic editing.
-            Previous studies typically tackle these two editing tasks separately, 
-            thereby demanding multiple editing processes to achieve versatile edits on a single image.
-            However, fragmented and sequential editing processes not only require more user effort but also further degrade the editing quality.
-            In this paper, we propose UniCanvas, an affordance-aware unified framework that can achieve high-quality parallel subject-driven and semantic editing on a single real image within one inference process.
-            UniCanvas innovatively unifies the multimodal inputs of the editing task into the textual condition space using tailored customization strategies.
-            Building upon the unified representations, we propose a novel inference pipeline that performs parallel editing by selectively blending and manipulating two collaborative text-to-image generative branches.
-            Customization enables the editing process to harness the strong visual understanding and reasoning capability of pre-trained generative models for affordance perception, and a unified inference space further facilitates more effective affordance interaction and alignment for compelling editing.
-            Extensive experiments on diverse real image demonstrate that UniCanvas exhibits powerful scene affordance perception in unified image editing, achieving seamless subject-driven editing and precise semantic editing for various target subject and query prompts.
+            Customized text-to-image generation aims to render user-specified concepts into novel contexts as instructed by textual prompts.
+            However, it suffers from an inherent trade-off between concept fidelity and editability, i.e., between the precise rendition of the customized concept and the faithful expression of the contextual content.
+            In this paper, we exploit the nature of the diffusion model that handles different image content at varying denoising steps and model layers for fidelity–editability harmonization.
+            Our initial analysis reveals that contextual content has narrow and consistent trigger intervals, where skipping the injection of customized elements into the denoising model effectively restores editability and mitigates overfitting.
+            Leveraging the insights above, we propose Shrinking Injection of Customized Element (SInCE), a novel "subtractive" framework.
+            In the fine-tuning, SInCE encapsulates all customized elements into a plug-and-play module using an adversarial tuning strategy.
+            Besides, it modulates the trigger intervals of custom concept to better disentangle them from the intervals of contextual content.
+            At inference, customized information is injected into the denoising model only outside the trigger interval of contextual content. 
+            The disentanglement between the trigger intervals of customized and contextual content enables SInCE to effectively restore editability without degrading concept fidelity.
+            Extensive experiments validate the effectiveness of SInCE in harmonizing the fidelity–editability trade-off.
           </p>
         </div>
       </div>
